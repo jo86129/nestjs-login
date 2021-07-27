@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>主頁</title>
+</head>
+<body>
+  <div class="h-100 row bg-img">
+    <div class="col-12 mt-2"></div>
+    <div class="col-4"></div>
+    <div class="mx-3 col-4 row card" style="height: fit-content">
+      <div class="card-body">
+        <h2 class="text-center card-title my-4 text-success">登入成功</h2>
+        <h4 class="text-center card-title my-4 text-secondary">歡迎你: {{ name }}</h4>
+        <div class="col-12 text-center px-2">
+          <form action="/api/user/logout" method="POST">
+             <button class="col-12 btn btn-md btn-secondary" type="submit">登出</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<style>
+  html,body{
+    height: 100%;
+    margin:0;
+    padding:0;
+    border:none;
+  }
+  .bg-img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../img/indexPage.jpg); 
+  }
+</style>

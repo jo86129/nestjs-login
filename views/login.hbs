@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>登入頁</title>
+</head>
+<body>
+  <div class="h-100 row bg-img" id="login">
+    <div class="col-12 mt-2"></div>
+    <div class="col-4"></div>
+    <div class="mx-3 col-4 row card" style="height: fit-content">
+      <div class="card-body">
+        <h4 class="text-center card-title my-4">登入頁</h4>
+        <div class="mb-3 col-12 px-2">
+          <input type="text" class="form-control" id="username" name="username" v-model="username" placeholder="username">
+        </div>
+        <div class="mb-3 col-12 px-2">
+          <input type="password" class="form-control" id="password" name="password" v-model="password" @keyup.enter="login" placeholder="password">
+        </div>
+        <div class="col-12 text-center px-2">
+          <button class="col-12 btn btn-md btn-secondary" @click="login">登入</button>
+        </div>
+        <div class="col-12 mt-2 text-end px-2 text-primary addUser" @click="jumpPage">新增使用者</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#login',
+      data(){
+        return {
+          username: '',
+          password: ''
+        }
+      },
+      methods:{
+        jumpPage(){
+          window.location.href= 'createUser'
+        },
+        async login(){
+          try{
+            const { data } = await axios.post('/api/user/login',{
+              username: this.username,
+              password: this.password
+            })
+            window.location.href = '/'
+          }catch(err) {
+            alert('帳密錯誤')
+          }
+          
+        }
+      }
+    }).$mount('#login')
+  </script>
+</body>
+<style>
+  html,body{
+    height: 100%;
+    margin:0;
+    padding:0;
+    border:none;
+  }
+  .bg-img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../img/loginPage.jpg); 
+  }
+  .addUser:hover{
+    cursor:pointer
+  }
+</style>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>建立使用者</title>
+</head>
+<body>
+  <div class="h-100 row bg-img">
+    <div class="col-12 mt-4"></div>
+    <div class="col-4"></div>
+    <div class="px-3 col-4 row card" style="height: fit-content">
+      <h4 class="card-title text-center text-secondary my-4">創建使用者</h4>
+      <div class="card-body mx-1">
+        <form id='create' action="/api/user" method="POST" >
+          <div class="col-12 px-2">
+            <label for="username">帳號</label>
+            <input type="text" class="form-control" name="username" id="username">
+          </div>
+          <div class="col-12 px-2">
+            <label for="password">密碼</label>
+            <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <div class="col-12 px-2">
+            <label for="name">姓名/暱稱</label>
+            <input type="name" class="form-control" name="name" id="name">
+          </div>
+          <div class="col-12 mt-2 px-2" type="submit">
+            <button class="col-12 btn btn-md btn-primary">建立</button>
+          </div>
+        </form>
+      </div>
+      <div class="text-end back text-primary mb-2" onclick="back()">返回登入頁</div>
+    </div>
+  </div>
+  <script>
+    function back(){
+      window.location.href='/login'
+    }
+  </script>
+</body>
+</html>
+<style>
+  html,body{
+    height: 100%;
+    margin:0;
+    padding:0;
+    border:none;
+  }
+  .bg-img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../img/createUserPage.jpg); 
+  }
+  .back:hover{
+    cursor: pointer;
+  }
+</style>
